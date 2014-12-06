@@ -1,18 +1,18 @@
 /*
  * Copyright (c) 2005-2013 Michael Shafae
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
- * are met: 
- * 
+ * are met:
+ *
  * 1. Redistributions of source code must retain the above copyright
  *    notice, this list of conditions and the following disclaimer.
- * 
+ *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
  * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
@@ -82,7 +82,7 @@ void vecDifference3d(double *c, double *a, double *b){
 void vecCross3d(double *n, double *u, double *v){
   n[0] = u[1] * v[2] - u[2] * v[1];
   n[1] = u[2] * v[0] - u[0] * v[2];
-  n[2] = u[0] * v[1] - u[1] * v[0]; 
+  n[2] = u[0] * v[1] - u[1] * v[0];
 }
 
 
@@ -117,13 +117,13 @@ void vecCalcNormal3d(double *n, double *p, double *p1, double *p2){
 double vecDistanceBetween3d(double *a, double *b ){
   double c[3];
   vecDifference3d(c, a, b);
-  return( vecLength3d(c) ); 
+  return( vecLength3d(c) );
 }
 
 double vecSquaredDistanceBetween3d(double *a, double *b ){
   double c[3];
   vecDifference3d(c, a, b);
-  return( vecSquaredLength3d(c) ); 
+  return( vecSquaredLength3d(c) );
 }
 
 
@@ -242,7 +242,7 @@ FaceList* readPlyModel( const char* filename ){
     }
     inputfile.getline(buffer, sizeof(buffer), '\n');
   }
-  
+
   if (strncmp(buffer, "element face", 12) == 0)
     sscanf(buffer, "element face %u\n", &nf);
   else {
@@ -255,12 +255,12 @@ FaceList* readPlyModel( const char* filename ){
     std::cerr << "Error: property list expected." << std::endl;
     exit(1);
   }
-  
+
   inputfile.getline(buffer, sizeof(buffer), '\n');
   while (strncmp(buffer, "end_header", 10) != 0){
     inputfile.getline(buffer, sizeof(buffer), '\n');
   }
-  
+
   // Allocate FaceList object
   if( !(fl = new FaceList( nv, nf)) ){
     std::cerr << "Could not allocate a new face list for the model." << std::endl;
@@ -286,7 +286,7 @@ FaceList* readPlyModel( const char* filename ){
   }
 
   inputfile.close( );
-  
+
   calcBoundingSphere(fl->center, &(fl->radius), fl);
   for( i = 0; i < nv; i++){
     vecDifference3d(fl->vertices[i], fl->vertices[i], fl->center);

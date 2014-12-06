@@ -1,8 +1,8 @@
-/* 
+/*
  * Programmer: Brian Mitzel
  * Email: bmitzel@csu.fullerton.edu
  * Course: CPSC 486
- * 
+ *
  * Filename: Scene.cpp
  *
  * This is a C++ implementation of a Scene object which
@@ -11,32 +11,52 @@
 
 #include "Scene.h"
 
-Scene::Scene( )
-: camera( 0.0f, 1.5f, 4.0f, 0.0f, 1.5f, 0.0f, 0.0f, 1.0f, 0.0f )
+/**
+ * Default constructor initializes the camera
+ */
+Scene::Scene()
+	: camera(0.0f, 1.5f, 6.0f, 0.0f, 1.5f, 0.0f, 0.0f, 1.0f, 0.0f)
 {
-}
+	/* empty */
+} /* Default constructor */
 
-Scene::~Scene( )
+/**
+ * Destructor releases dynamically-allocated memory
+ */
+Scene::~Scene()
 {
-	while ( !models.empty( ) )
+	while (!models.empty())
 	{
-		delete models.back( );
-		models.pop_back( );
+		delete models.back();
+		models.pop_back();
 	}
-}
+} /* Destructor */
 
-void Scene::Insert( char* filename, const Point3& loc )
+/**
+ * Inserts a new model into the scene
+ * @param filename - The name of the file containing a PLY model to insert
+ * @param pos - The 3D position where the center of the model will be located
+ */
+void Scene::Insert(const char* filename, const Point3& pos)
 {
-	Model* newModel = new Model( filename, loc );
-	models.push_back( newModel );
-}
+	Model* newModel = new Model(filename, pos);
+	models.push_back(newModel);
+} /* Insert() */
 
-const std::list< Model* > Scene::GetModels( ) const
+/**
+ * Returns the list of models contained in the scene
+ * @return A constant reference to the list of models contained in the scene
+ */
+std::list<Model*>* Scene::GetModels()
 {
-	return models;
-}
+	return &models;
+} /* GetModels() */
 
-const Camera& Scene::GetCamera( ) const
+/**
+ * Returns the camera
+ * @return A constant reference to the camera object
+ */
+Camera* Scene::GetCamera()
 {
-	return camera;
-}
+	return &camera;
+} /* GetCamera() */

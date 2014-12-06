@@ -24,10 +24,10 @@ endif
 
 TARGET = picking
 # C++ Files
-CXXFILES =   picking.cpp Camera.cpp Model.cpp PlyModel.cpp Point3.cpp Ray.cpp Renderer.cpp Scene.cpp Vec3.cpp Vec4.cpp VecMath.cpp
+CXXFILES =   picking.cpp Camera.cpp Model.cpp PlyModel.cpp Point3.cpp Ray.cpp Scene.cpp Vec3.cpp Vec4.cpp VecMath.cpp
 CFILES =  
 # Headers
-HEADERS =  Camera.h GLSLShader.h Model.h PlyModel.h Point3.h Ray.h Renderer.h Scene.h Vec3.h Vec4.h VecMath.h
+HEADERS =  Camera.h GLSLShader.h Model.h PlyModel.h Point3.h Ray.h Scene.h Vec3.h Vec4.h VecMath.h
 
 OBJECTS = $(CXXFILES:.cpp=.o) $(CFILES:.c=.o)
 

@@ -1,18 +1,18 @@
 /*
  * Copyright (c) 2005-2013 Michael Shafae
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
- * are met: 
- * 
+ * are met:
+ *
  * 1. Redistributions of source code must retain the above copyright
  *    notice, this list of conditions and the following disclaimer.
- * 
+ *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
  * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
@@ -30,6 +30,9 @@
  *
  */
 
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <iostream>
 
 #ifndef _FACELIST_H_
@@ -82,17 +85,17 @@ public:
   // The face's surface normal
   double **f_normals;
   double **v_normals;
-  
+
   // bounding sphere
   double radius;
   double center[3];
-  
+
   FaceList( int vertexCount, int faceCount ){
     vc = vertexCount;
     fc = faceCount;
 
 		msAlloc2D( double, vertices, vc, 3 );
-    
+
 		msAlloc2D( double, colors, vc, 3 );
 
 		msAlloc2D( double, v_normals, vc, 3 );
@@ -101,7 +104,7 @@ public:
 
 		msAlloc2D( int, faces, fc, 3 );
   };
-  
+
   ~FaceList( ){
 		msFree2D( vertices, vc, 3 );
 		msFree2D( v_normals, vc, 3 );
