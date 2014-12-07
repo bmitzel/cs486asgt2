@@ -17,9 +17,9 @@
  * @param far - Another 3D point on the ray for calculating its direction
  */
 Ray::Ray(const Point3& near, const Point3& far)
-	: origin(near.x, near.y, near.z)
-	, direction(far.x - near.x, far.y - near.y, far.z - near.z)
+    : origin(near.x, near.y, near.z)
+    , direction(far.x - near.x, far.y - near.y, far.z - near.z)
 {
-	/* Normalize the ray's direction vector */
-	direction = direction.Normalize();
+    /* Normalize the ray's direction vector */
+    direction = direction.Normalize();
 }

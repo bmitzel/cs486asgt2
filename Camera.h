@@ -16,15 +16,15 @@
 class Camera
 {
 public:
-	/* Public data members */
-	Point3 eyePosition;
-	Point3 refPoint;
-	Vec3 upVector;
+    /* Public data members */
+    Point3 eyePosition;
+    Point3 refPoint;
+    Vec3 upVector;
 
-	/* Default constructor */
-	Camera(float eyeX, float eyeY, float eyeZ,
-		   float refX, float refY, float refZ,
-		   float upX , float upY , float upZ );
+    /* Default constructor */
+    Camera(float eyeX, float eyeY, float eyeZ,
+           float refX, float refY, float refZ,
+           float upX , float upY , float upZ );
 }; /* Camera class */
 
 #endif /* CAMERA_H_ */

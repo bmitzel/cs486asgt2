@@ -16,12 +16,12 @@
  * @param v - A 4D vector to convert into a 3D point
  */
 Point3::Point3(const Vec4& v)
-	/* It is up to the caller to avoid division by zero */
-	: x(v.x / v.w)
-	, y(v.y / v.w)
-	, z(v.z / v.w)
+    /* It is up to the caller to avoid division by zero */
+    : x(v.x / v.w)
+    , y(v.y / v.w)
+    , z(v.z / v.w)
 {
-	/* empty */
+    /* empty */
 } /* Copy constructor with Vec4 */
 
 /**
@@ -31,5 +31,5 @@ Point3::Point3(const Vec4& v)
  */
 Vec3 Point3::operator-(const Point3& p) const
 {
-	return Vec3((x - p.x), (y - p.y), (z - p.z));
+    return Vec3((x - p.x), (y - p.y), (z - p.z));
 } /* operator-() */

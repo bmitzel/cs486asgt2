@@ -20,21 +20,21 @@
 class Scene
 {
 public:
-	/* Default constructor */
-	Scene();
+    /* Default constructor */
+    Scene();
 
-	/* Destructor */
-	~Scene();
+    /* Destructor */
+    ~Scene();
 
-	/* Member functions */
-	void Insert(const char* filename, const Point3& pos);
-	std::list<Model*>* GetModels();
-	Camera* GetCamera();
+    /* Member functions */
+    void Insert(const char* filename, const Point3& pos);
+    std::list<Model*>* GetModels();
+    Camera* GetCamera();
 
 private:
-	/* Private member variables */
-	std::list<Model*> models;
-	Camera camera;
+    /* Private member variables */
+    std::list<Model*> models;
+    Camera camera;
 }; /* Scene class */
 
 #endif /* SCENE_H_ */

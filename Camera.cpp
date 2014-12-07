@@ -22,11 +22,11 @@
  * @param upZ - Component z of the up vector
  */
 Camera::Camera(float eyeX, float eyeY, float eyeZ,
-			   float refX, float refY, float refZ,
-			   float upX , float upY , float upZ )
-	: eyePosition(eyeX, eyeY, eyeZ)
-	, refPoint(refX, refY, refZ)
-	, upVector(upX, upY, upZ)
+               float refX, float refY, float refZ,
+               float upX , float upY , float upZ )
+    : eyePosition(eyeX, eyeY, eyeZ)
+    , refPoint(refX, refY, refZ)
+    , upVector(upX, upY, upZ)
 {
-	/* empty */
+    /* empty */
 }/* Default constructor */

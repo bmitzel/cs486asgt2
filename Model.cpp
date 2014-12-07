@@ -17,26 +17,26 @@
  * @param pos - The position of the center of the model in world space
  */
 Model::Model(const char* filename, const Point3& pos)
-	: rotationSpeed(130.0f)
-	, translationSpeed(2.5f)
-	, isDrawingBoundingSphere(false)
+    : rotationSpeed(130.0f)
+    , translationSpeed(2.5f)
+    , isDrawingBoundingSphere(false)
 {
-	/* Load the PLY model and initialize its position */
-	faceList = readPlyModel(filename);
-	faceList->center[0] = static_cast<double>(pos.x);
-	faceList->center[1] = static_cast<double>(pos.y);
-	faceList->center[2] = static_cast<double>(pos.z);
+    /* Load the PLY model and initialize its position */
+    faceList = readPlyModel(filename);
+    faceList->center[0] = static_cast<double>(pos.x);
+    faceList->center[1] = static_cast<double>(pos.y);
+    faceList->center[2] = static_cast<double>(pos.z);
 
-	/* Set the model scaling */
-	scaleFactor = 0.5 / faceList->radius;
-	scaledRadius = scaleFactor * faceList->radius;
+    /* Set the model scaling */
+    scaleFactor = 0.5 / faceList->radius;
+    scaledRadius = scaleFactor * faceList->radius;
 
-	/* Initialize the starting height and rotation of the model */
-	startingHeight = static_cast<double>(pos.y);
-	randomDegrees = static_cast<double>(rand() % 360);
-	fprintf(stderr, "randomDegrees = %f\n", randomDegrees);
-	rotation = randomDegrees;
-	randomRadians = randomDegrees * (2.0 * M_PI) / 360.0;
+    /* Initialize the starting height and rotation of the model */
+    startingHeight = static_cast<double>(pos.y);
+    randomDegrees = static_cast<double>(rand() % 360);
+    fprintf(stderr, "randomDegrees = %f\n", randomDegrees);
+    rotation = randomDegrees;
+    randomRadians = randomDegrees * (2.0 * M_PI) / 360.0;
 } /* Default constructor */
 
 /**
@@ -44,7 +44,7 @@ Model::Model(const char* filename, const Point3& pos)
  */
 Model::~Model()
 {
-	delete faceList;
+    delete faceList;
 } /* Destructor */
 
 /**
@@ -52,14 +52,14 @@ Model::~Model()
  */
 void Model::Update()
 {
-	float elapsedTime = static_cast<float>(GetElapsedTime());
+    float elapsedTime = static_cast<float>(GetElapsedTime());
 
-	/* Rotate the model */
-	rotation = randomDegrees + elapsedTime * rotationSpeed;
+    /* Rotate the model */
+    rotation = randomDegrees + elapsedTime * rotationSpeed;
 
-	/* Translate the model */
-	faceList->center[1] =
-			startingHeight + (0.4 * sin(translationSpeed * (elapsedTime + randomRadians)));
+    /* Translate the model */
+    faceList->center[1] =
+            startingHeight + (0.4 * sin(translationSpeed * (elapsedTime + randomRadians)));
 } /* Model::Update() */
 
 /**
@@ -68,7 +68,7 @@ void Model::Update()
  */
 float Model::GetRotation() const
 {
-	return rotation;
+    return rotation;
 } /* Model::GetRotation() */
 
 /**
@@ -77,7 +77,7 @@ float Model::GetRotation() const
  */
 double Model::GetScaleFactor() const
 {
-	return scaleFactor;
+    return scaleFactor;
 } /* Model::GetScaleFactor() */
 
 /**
@@ -86,7 +86,7 @@ double Model::GetScaleFactor() const
  */
 double Model::GetScaledRadius() const
 {
-	return scaledRadius;
+    return scaledRadius;
 } /* Model::GetScaledRadius() */
 
 /**
@@ -95,7 +95,7 @@ double Model::GetScaledRadius() const
  */
 bool Model::GetIsDrawingBoundingSphere() const
 {
-	return isDrawingBoundingSphere;
+    return isDrawingBoundingSphere;
 } /* Model::GetIsDrawingBoundingSphere() */
 
 /**
@@ -104,7 +104,7 @@ bool Model::GetIsDrawingBoundingSphere() const
  */
 void Model::SetIsDrawingBoundingSphere(bool flag)
 {
-	isDrawingBoundingSphere = flag;
+    isDrawingBoundingSphere = flag;
 } /* Model::SetIsDrawingBoundingSphere() */
 
 /**
@@ -112,7 +112,7 @@ void Model::SetIsDrawingBoundingSphere(bool flag)
  */
 void Model::ToggleDrawingBoundingSphere()
 {
-	isDrawingBoundingSphere = !isDrawingBoundingSphere;
+    isDrawingBoundingSphere = !isDrawingBoundingSphere;
 } /* Model::ToggleDrawingBoundingSphere() */
 
 /**
@@ -122,34 +122,34 @@ void Model::ToggleDrawingBoundingSphere()
  */
 bool Model::Intersects(const Ray& ray) const
 {
-	/* If the ray's origin is inside the bounding sphere, it intersects */
-	Vec3 l = Point3(faceList->center[0], faceList->center[1], faceList->center[2]) - ray.origin;
-	float lSquared = l.Length2();
-	float rSquared = scaledRadius * scaledRadius;
-	if (lSquared < rSquared)
-	{
-		return true;
-	}
+    /* If the ray's origin is inside the bounding sphere, it intersects */
+    Vec3 l = Point3(faceList->center[0], faceList->center[1], faceList->center[2]) - ray.origin;
+    float lSquared = l.Length2();
+    float rSquared = scaledRadius * scaledRadius;
+    if (lSquared < rSquared)
+    {
+        return true;
+    }
 
-	/* Find the scalar projection of l onto the ray's direction */
-	float s = dot(l, ray.direction);
+    /* Find the scalar projection of l onto the ray's direction */
+    float s = dot(l, ray.direction);
 
-	/* If s < 0, the ray points away from the sphere */
-	if (s < 0.0f)
-	{
-		return false;
-	}
+    /* If s < 0, the ray points away from the sphere */
+    if (s < 0.0f)
+    {
+        return false;
+    }
 
-	/* Find mSquared using the Pythagorean Theorem and check for intersection */
-	float sSquared = s * s;
-	float mSquared = lSquared - sSquared;
-	if (mSquared > rSquared)
-	{
-		return false;
-	}
+    /* Find mSquared using the Pythagorean Theorem and check for intersection */
+    float sSquared = s * s;
+    float mSquared = lSquared - sSquared;
+    if (mSquared > rSquared)
+    {
+        return false;
+    }
 
-	/* The ray intersects */
-	return true;
+    /* The ray intersects */
+    return true;
 } /* Model::Intersects() */
 
 /**
@@ -158,7 +158,7 @@ bool Model::Intersects(const Ray& ray) const
  */
 FaceList* Model::GetFaceList() const
 {
-	return faceList;
+    return faceList;
 } /* Model::GetFaceList() */
 
 /**

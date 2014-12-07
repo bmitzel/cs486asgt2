@@ -16,11 +16,11 @@
  * @param v - A 3D point to convert to a 3D vector
  */
 Vec3::Vec3(const Point3& p)
-	: x(p.x)
-	, y(p.y)
-	, z(p.z)
+    : x(p.x)
+    , y(p.y)
+    , z(p.z)
 {
-	/* empty */
+    /* empty */
 } /* Copy constructor with Point3 */
 
 /**
@@ -28,11 +28,11 @@ Vec3::Vec3(const Point3& p)
  * @param v - A 4D vector to convert to a 3D vector
  */
 Vec3::Vec3(const Vec4& v)
-	: x(v.x)
-	, y(v.y)
-	, z(v.z)
+    : x(v.x)
+    , y(v.y)
+    , z(v.z)
 {
-	/* empty */
+    /* empty */
 } /* Copy constructor with Vec4 */
 
 /**
@@ -41,7 +41,7 @@ Vec3::Vec3(const Vec4& v)
  */
 float Vec3::Length() const
 {
-	return sqrt((x * x) + (y * y) + (z * z));
+    return sqrt((x * x) + (y * y) + (z * z));
 } /* Length() */
 
 /**
@@ -50,7 +50,7 @@ float Vec3::Length() const
  */
 float Vec3::Length2() const
 {
-	return (x * x) + (y * y) + (z * z);
+    return (x * x) + (y * y) + (z * z);
 } /* Length2() */
 
 /**
@@ -59,7 +59,7 @@ float Vec3::Length2() const
  */
 Vec3 Vec3::Negate() const
 {
-	return Vec3(-x, -y, -z);
+    return Vec3(-x, -y, -z);
 } /* Negate() */
 
 /**
@@ -68,8 +68,8 @@ Vec3 Vec3::Negate() const
  */
 Vec3 Vec3::Normalize() const
 {
-	float length = Length();
-	return Vec3((x / length), (y / length), (z / length));
+    float length = Length();
+    return Vec3((x / length), (y / length), (z / length));
 } /* Normalize() */
 
 /**
@@ -79,7 +79,7 @@ Vec3 Vec3::Normalize() const
  */
 Vec3 Vec3::operator+(const Vec3& v) const
 {
-	return Vec3((x + v.x), (y + v.y), (z + v.z));
+    return Vec3((x + v.x), (y + v.y), (z + v.z));
 } /* operator+() */
 
 /**
@@ -89,7 +89,7 @@ Vec3 Vec3::operator+(const Vec3& v) const
  */
 Vec3 Vec3::operator-(const Vec3& v) const
 {
-	return Vec3((x - v.x), (y - v.y), (z - v.z));
+    return Vec3((x - v.x), (y - v.y), (z - v.z));
 } /* operator-() */
 
 /**
@@ -99,7 +99,7 @@ Vec3 Vec3::operator-(const Vec3& v) const
  */
 Vec3 Vec3::operator*(float c) const
 {
-	return Vec3((c * x), (c * y), (c * z));
+    return Vec3((c * x), (c * y), (c * z));
 } /* operator*() */
 
 /**
@@ -109,7 +109,7 @@ Vec3 Vec3::operator*(float c) const
  */
 Vec3 Vec3::operator/(float c) const
 {
-	return Vec3((x / c), (y / c), (z / c));
+    return Vec3((x / c), (y / c), (z / c));
 } /* operator/() */
 
 /**
@@ -119,10 +119,10 @@ Vec3 Vec3::operator/(float c) const
  */
 const Vec3& Vec3::operator=(const Vec3& v)
 {
-	x = v.x;
-	y = v.y;
-	z = v.z;
-	return *this; /* enables cascading assignments */
+    x = v.x;
+    y = v.y;
+    z = v.z;
+    return *this; /* enables cascading assignments */
 } /* operator=() */
 
 /**
@@ -131,11 +131,11 @@ const Vec3& Vec3::operator=(const Vec3& v)
  */
 void Vec3::Print(FILE* f) const
 {
-	fprintf(f,
-		"Vec3:\n"
-		" x = %f\n"
-		" y = %f\n"
-		" z = %f\n"
-		, x, y, z
-	);
+    fprintf(f,
+        "Vec3:\n"
+        " x = %f\n"
+        " y = %f\n"
+        " z = %f\n"
+        , x, y, z
+    );
 } /* Print() */

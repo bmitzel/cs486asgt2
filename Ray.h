@@ -18,12 +18,12 @@
 class Ray
 {
 public:
-	/* Public data members */
-	Point3 origin;
-	Vec3 direction;
+    /* Public data members */
+    Point3 origin;
+    Vec3 direction;
 
-	/* Default constructor */
-	Ray(const Point3& near, const Point3& far);
+    /* Default constructor */
+    Ray(const Point3& near, const Point3& far);
 }; /* Ray class */
 
 #endif /* RAY_H_ */

@@ -29,7 +29,7 @@ varying vec3 myNormal;
 varying vec4 myVertex;
 
 void main() {
-	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
-	myNormal = gl_Normal;
-	myVertex = gl_Vertex;
+    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
+    myNormal = gl_Normal;
+    myVertex = gl_Vertex;
 }

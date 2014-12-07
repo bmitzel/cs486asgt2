@@ -15,9 +15,9 @@
  * Default constructor initializes the camera
  */
 Scene::Scene()
-	: camera(0.0f, 1.5f, 6.0f, 0.0f, 1.5f, 0.0f, 0.0f, 1.0f, 0.0f)
+    : camera(0.0f, 1.5f, 6.0f, 0.0f, 1.5f, 0.0f, 0.0f, 1.0f, 0.0f)
 {
-	/* empty */
+    /* empty */
 } /* Default constructor */
 
 /**
@@ -25,11 +25,11 @@ Scene::Scene()
  */
 Scene::~Scene()
 {
-	while (!models.empty())
-	{
-		delete models.back();
-		models.pop_back();
-	}
+    while (!models.empty())
+    {
+        delete models.back();
+        models.pop_back();
+    }
 } /* Destructor */
 
 /**
@@ -39,8 +39,8 @@ Scene::~Scene()
  */
 void Scene::Insert(const char* filename, const Point3& pos)
 {
-	Model* newModel = new Model(filename, pos);
-	models.push_back(newModel);
+    Model* newModel = new Model(filename, pos);
+    models.push_back(newModel);
 } /* Insert() */
 
 /**
@@ -49,7 +49,7 @@ void Scene::Insert(const char* filename, const Point3& pos)
  */
 std::list<Model*>* Scene::GetModels()
 {
-	return &models;
+    return &models;
 } /* GetModels() */
 
 /**
@@ -58,5 +58,5 @@ std::list<Model*>* Scene::GetModels()
  */
 Camera* Scene::GetCamera()
 {
-	return &camera;
+    return &camera;
 } /* GetCamera() */

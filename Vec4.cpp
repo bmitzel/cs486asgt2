@@ -16,12 +16,12 @@
  * @param v - A 3D point to convert to a 4D vector
  */
 Vec4::Vec4(const Point3& p)
-	: x(p.x)
-	, y(p.y)
-	, z(p.z)
-	, w(1.0f)
+    : x(p.x)
+    , y(p.y)
+    , z(p.z)
+    , w(1.0f)
 {
-	/* empty */
+    /* empty */
 } /* Copy constructor with Point3 */
 
 /**
@@ -29,12 +29,12 @@ Vec4::Vec4(const Point3& p)
  * @param v - A 3D vector to convert to a 4D vector
  */
 Vec4::Vec4(const Vec3& v)
-	: x(v.x)
-	, y(v.y)
-	, z(v.z)
-	, w(0.0f)
+    : x(v.x)
+    , y(v.y)
+    , z(v.z)
+    , w(0.0f)
 {
-	/* empty */
+    /* empty */
 } /* Copy constructor with Vec3 */
 
 /**
@@ -43,7 +43,7 @@ Vec4::Vec4(const Vec3& v)
  */
 float Vec4::Length() const
 {
-	return sqrt((x * x) + (y * y) + (z * z) + (w * w));
+    return sqrt((x * x) + (y * y) + (z * z) + (w * w));
 } /* Length() */
 
 /**
@@ -52,7 +52,7 @@ float Vec4::Length() const
  */
 float Vec4::Length2() const
 {
-	return (x * x) + (y * y) + (z * z) + (w * w);
+    return (x * x) + (y * y) + (z * z) + (w * w);
 } /* Length2() */
 
 /**
@@ -61,7 +61,7 @@ float Vec4::Length2() const
  */
 Vec4 Vec4::Negate() const
 {
-	return Vec4(-x, -y, -z, -w);
+    return Vec4(-x, -y, -z, -w);
 } /* Negate() */
 
 /**
@@ -70,8 +70,8 @@ Vec4 Vec4::Negate() const
  */
 Vec4 Vec4::Normalize() const
 {
-	float length = Length();
-	return Vec4((x / length), (y / length), (z / length), (w / length));
+    float length = Length();
+    return Vec4((x / length), (y / length), (z / length), (w / length));
 } /* Normalize() */
 
 /**
@@ -81,7 +81,7 @@ Vec4 Vec4::Normalize() const
  */
 Vec4 Vec4::operator+(const Vec4& v) const
 {
-	return Vec4((x + v.x), (y + v.y), (z + v.z), (w + v.w));
+    return Vec4((x + v.x), (y + v.y), (z + v.z), (w + v.w));
 } /* operator+() */
 
 /**
@@ -91,7 +91,7 @@ Vec4 Vec4::operator+(const Vec4& v) const
  */
 Vec4 Vec4::operator-(const Vec4& v) const
 {
-	return Vec4((x - v.x), (y - v.y), (z - v.z), (w - v.w));
+    return Vec4((x - v.x), (y - v.y), (z - v.z), (w - v.w));
 } /* operator-() */
 
 /**
@@ -101,7 +101,7 @@ Vec4 Vec4::operator-(const Vec4& v) const
  */
 Vec4 Vec4::operator*(float c) const
 {
-	return Vec4((c * x), (c * y), (c * z), (c * w));
+    return Vec4((c * x), (c * y), (c * z), (c * w));
 } /* operator*() */
 
 /**
@@ -111,7 +111,7 @@ Vec4 Vec4::operator*(float c) const
  */
 Vec4 Vec4::operator/(float c) const
 {
-	return Vec4((x / c), (y / c), (z / c), (w / c));
+    return Vec4((x / c), (y / c), (z / c), (w / c));
 } /* operator/() */
 
 /**
@@ -121,11 +121,11 @@ Vec4 Vec4::operator/(float c) const
  */
 const Vec4& Vec4::operator=(const Vec4& v)
 {
-	x = v.x;
-	y = v.y;
-	z = v.z;
-	w = v.w;
-	return *this; /* enables cascading assignments */
+    x = v.x;
+    y = v.y;
+    z = v.z;
+    w = v.w;
+    return *this; /* enables cascading assignments */
 } /* operator=() */
 
 /**
@@ -134,12 +134,12 @@ const Vec4& Vec4::operator=(const Vec4& v)
  */
 void Vec4::Print(FILE* f) const
 {
-	fprintf(f,
-		"Vec4:\n"
-		" x = %f\n"
-		" y = %f\n"
-		" z = %f\n"
-		" w = %f\n"
-		, x, y, z, w
-	);
+    fprintf(f,
+        "Vec4:\n"
+        " x = %f\n"
+        " y = %f\n"
+        " z = %f\n"
+        " w = %f\n"
+        , x, y, z, w
+    );
 } /* Print() */
